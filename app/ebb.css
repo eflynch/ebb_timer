@@ -40,7 +40,7 @@ div.ebb_show {
     -ms-user-select: none;
     font-size: 300px;
     position: fixed;
-    width: 100%;
+    width: 800px;
     margin-top: 100px;
 }
 
@@ -51,7 +51,7 @@ div.ebb_giveup {
     -ms-user-select: none;
     font-size: 300px;
     position: fixed;
-    width: 100%;
+    width: 800px;
     margin-top: 100px;
 }
 
