@@ -44,18 +44,17 @@ var Main = React.createClass({
         this.setTimeout(function (){this.clear();}.bind(this), 7000);
     },
     start: function (time){
-        this.setState({state: 'going'});
+        this.setState({state: 'writing'});
         var duration = time * 60 * 1000;
         this.mainTimer = setTimeout(function (){
-            this.setState({state: 'done'});
+            this.setState({state: 'init'});
             this.clearTimeouts();
         }.bind(this), duration);
         this.stoke();
     },
     clear: function (){
         this.setState({
-            html: "",
-            fading: false
+            html: ""
         });
     },
     copy: function (){
@@ -64,11 +63,11 @@ var Main = React.createClass({
     reset: function (){
         this.setState({
             html: "",
-            state: "init"
+            state: "prepare"
         });
     },
     render: function (){
-        if (this.state.state === 'going'){
+        if (this.state.state === 'writing'){
             return (
                 <div>
                     <div className={this.state.fading ? "ebb_show" : "ebb_giveup"}>☹</div>
@@ -77,10 +76,10 @@ var Main = React.createClass({
                     </div>
                 </div>
             );
-        } else if (this.state.state === 'init') {
+        } else if (this.state.state === 'prepare') {
             return (
                 <div>
-                    <h1 className="ebb_unselectable">Ebb Timer: Select Duration </h1>
+                    <h1 className="ebb_unselectable">Select Duration </h1>
                     <div className="ebb_num" onClick={function(){this.start(1);}.bind(this)}><span>1</span></div>
                     <div className="ebb_num" onClick={function(){this.start(5);}.bind(this)}><span>5</span></div>
                     <div className="ebb_num" onClick={function(){this.start(10);}.bind(this)}><span>10</span></div>
@@ -90,7 +89,7 @@ var Main = React.createClass({
                     <div className="ebb_num" onClick={function(){this.start(160);}.bind(this)}><span>160</span></div>
                 </div>
             );
-        } else if (this.state.state === 'done'){
+        } else if (this.state.state === 'init'){
             return (
                 <div>
                     <div className="ebb_done"><span onClick={this.copy}>☺</span>︎ <span onClick={this.reset}>✍</span></div> 

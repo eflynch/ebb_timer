@@ -19164,18 +19164,17 @@ var Main = React.createClass({
         }.bind(this), 7000);
     },
     start: function (time) {
-        this.setState({ state: 'going' });
+        this.setState({ state: 'writing' });
         var duration = time * 60 * 1000;
         this.mainTimer = setTimeout(function () {
-            this.setState({ state: 'done' });
+            this.setState({ state: 'init' });
             this.clearTimeouts();
         }.bind(this), duration);
         this.stoke();
     },
     clear: function () {
         this.setState({
-            html: "",
-            fading: false
+            html: ""
         });
     },
     copy: function () {
@@ -19184,11 +19183,11 @@ var Main = React.createClass({
     reset: function () {
         this.setState({
             html: "",
-            state: "init"
+            state: "prepare"
         });
     },
     render: function () {
-        if (this.state.state === 'going') {
+        if (this.state.state === 'writing') {
             return React.createElement(
                 'div',
                 null,
@@ -19203,14 +19202,14 @@ var Main = React.createClass({
                     React.createElement(ContentEditable, { className: 'ebb', onChange: this.handleChange, html: this.state.html })
                 )
             );
-        } else if (this.state.state === 'init') {
+        } else if (this.state.state === 'prepare') {
             return React.createElement(
                 'div',
                 null,
                 React.createElement(
                     'h1',
                     { className: 'ebb_unselectable' },
-                    'Ebb Timer: Select Duration '
+                    'Select Duration '
                 ),
                 React.createElement(
                     'div',
@@ -19290,7 +19289,7 @@ var Main = React.createClass({
                     )
                 )
             );
-        } else if (this.state.state === 'done') {
+        } else if (this.state.state === 'init') {
             return React.createElement(
                 'div',
                 null,
