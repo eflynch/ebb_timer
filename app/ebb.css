@@ -18,9 +18,11 @@ body {
 }
 
 div.ebb {
+    position: absolute;
+    top: 100px;
     text-align: left;
     height: 100%;
-    width: 100%;
+    width: 800px;
     outline: none;
     overflow: auto;
     opacity: 1.0;
@@ -73,10 +75,16 @@ div.ebb_done {
 }
 
 div.ebb_done span {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 div.ebb_done span:hover {
     color: #946600;
+}
+
+div.ebb_done span.disabled {
+    color: #9AA39C;
 }
 
 div.ebb_num {
