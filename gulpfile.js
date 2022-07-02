@@ -9,7 +9,7 @@ var source       = require('vinyl-source-stream');
 var glob         = require('glob');
 
 var scriptsDir = './src';
-var buildDir = './app';
+var buildDir = './docs';
 
 var buildScript = function(file) {
   var bundler = watchify(browserify(scriptsDir + '/' + file, watchify.args));
